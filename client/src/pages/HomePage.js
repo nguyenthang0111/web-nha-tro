@@ -4,7 +4,7 @@ import Layout from '../components/Layout/Layout'
 function HomePage() {
   return (
     <Layout>
-      <h1>Home Page</h1>
+      <h1 className='text-9xl pt-2'>Home Page</h1>
     </Layout>
   )
 }
