@@ -67,10 +67,52 @@ export const getRoomController = async (req, res) => {
 
     } catch (error) {
         console.log(error); 
-        res.status(500).send({
+        res.status(400).send({
             success: false,
             error,
             message: "Error in get All Room"
         });
+    }
+}
+
+// Get single room
+export const getSingleRoomController = async (req, res) => {
+    try {
+        const test = await userModel.findOne({"rooms._id": req.params.rid});
+        res.status(200).json(test)
+    } catch (error) {
+        console.log(error);
+        res.status(400).send({
+            success: false,
+            message: "Error in finding single room"
+        })
+    }
+}
+
+// Get room list base on page
+export const roomListController = async (req, res) => {
+    try {
+        const perPage = 6;
+        const page = req.params.page ? req.params.page : 1;
+        const listRooms = [];
+        const outputRooms = [];
+        userModel.find({}).then(function(users){
+            users.forEach(user => {
+                const room = user.rooms;
+                listRooms.push(...room);
+            })
+            for ( let i = (page - 1) * perPage; i <= perPage * page - 1; i++ ) {
+                if (listRooms[i]) {
+                    outputRooms.push(listRooms[i]);
+                };
+            }
+            res.status(200).send(outputRooms);
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(400).send({
+            success: false,
+            message: "Error in loading room per Page"
+        })
     }
 }

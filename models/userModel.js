@@ -30,30 +30,35 @@ const userSchema = new mongoose.Schema(
     },
     rooms: [
       {
-        title: {
-          type: String,
-          required: true,
-        },
-        address: {
-          type: String,
-          required: true
-        },
-        price: {
-          type: Number,
-          required: true
-        },
-        waterPrice: {
-          type: Number,
-          required: true,
-        },
-        elecPrice: {
-          type: Number,
-          required: true,
-        },
-        description: {
-          type: String,
-          required: true,
-        },
+        type: new mongoose.Schema(
+          {
+            title: {
+              type: String,
+              required: true,
+            },
+            address: {
+              type: String,
+              required: true
+            },
+            price: {
+              type: Number,
+              required: true
+            },
+            waterPrice: {
+              type: Number,
+              required: true,
+            },
+            elecPrice: {
+              type: Number,
+              required: true,
+            },
+            description: {
+              type: String,
+              required: true,
+            },
+          },
+          { timestamps: true }
+        )
       }
     ]
   },
