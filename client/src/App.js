@@ -6,10 +6,10 @@ import Register from './pages/Auth/Register';
 
 function App() {
   return (
-    <>
+    <>  
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/404" element={<Pagenotfound />} />
+        <Route path="404" element={<Pagenotfound />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
