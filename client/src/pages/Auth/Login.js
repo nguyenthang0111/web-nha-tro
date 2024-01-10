@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import loginImg from '../../images/login-image.png'
 import Layout from '../../components/Layout/Layout';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useAuth } from '../../context/auth';
 
@@ -12,6 +12,7 @@ function Login() {
   const [auth, setAuth] = useAuth();
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,8 +29,7 @@ function Login() {
           token: res.data.token,
         });
         localStorage.setItem("auth", JSON.stringify(res.data));
-        console.log(res.data);
-        navigate('/');
+        navigate(location.state || "/");
       }
       else {
         toast.error(res.data.message)

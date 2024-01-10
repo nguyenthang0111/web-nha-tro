@@ -11,6 +11,7 @@ function Register() {
   const [password, setPassword] = useState('');
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
+  const [answer, setAnswer] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -91,11 +92,17 @@ function Register() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-          </div>  
-          <div className='flex justify-between text-gray-400 py-2'>
-              <p className='flex items-center'><input className='mr-2' type="checkbox" /> Remember Me</p>
-              <p>Forgot Password</p>
-          </div>
+          </div> 
+
+          <div className='flex flex-col text-gray-400 py-2'>
+              <label>What is Your Favorite sports</label>
+              <input 
+                className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus: bg-gray-800 focus:outline-none' 
+                type="text" 
+                value={answer}
+                onChange={(e) => setAnswer(e.target.value)}
+              />
+          </div>   
           <button className='w-full my-5 py-2 bg-teal-500 shadow-lg'>Sign In</button>
 
         </form>

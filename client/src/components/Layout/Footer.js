@@ -23,7 +23,7 @@ function Footer() {
 
           <li>
             <NavLink to="/" className="text-base px-3 font-semibold leading-6 text-gray-950 hover:text-red-500">
-              About
+              About 
             </NavLink>
           </li>
 

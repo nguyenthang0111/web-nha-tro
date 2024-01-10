@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { useAuth, auth } from '../../context/auth'
 
 function Header() {
+  const [open, setOpen] = useState(false);
   const [auth, setAuth] = useAuth();
   const handleLogout = () => {
     setAuth({
@@ -61,17 +62,27 @@ function Header() {
             </>
             ) : (
               <>
-                <div className="flex">
+                <div className="flex relative">
                   <NavLink
                     className="text-base px-3 font-semibold leading-6 text-white"
                     href="#"
                     role="button"
                     data-bs-toggle="dropdown"
                     style={{ border: "none" }}
+                    onClick={() => setOpen(!open)}
                   >
                     {auth?.user?.name}
                   </NavLink>
-                  <ul className="dropdown-menu flex">
+                  {
+                    open &&
+                    <div className='bg-white p-4 w-48 shadow-lg absolute -left-8 top-8'>
+                      <ul>
+                        <li className='p-1 text-base cursor-pointer rounded hover:bg-blue-100'>Dashboard</li>
+                        <li className='p-1 text-base cursor-pointer rounded hover:bg-blue-100' onClick={handleLogout}>Logout</li>
+                      </ul>
+                    </div>
+                  }
+                  {/* <ul className="dropdown-menu flex">
                     <li>
                       <NavLink
                         to="/#"
@@ -89,7 +100,7 @@ function Header() {
                         Logout
                       </NavLink>
                     </li>
-                  </ul>
+                  </ul> */}
                 </div>
               </>
                 )}
