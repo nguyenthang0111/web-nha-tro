@@ -1,9 +1,10 @@
 import userModel from "../models/userModel.js";
+import fs from "fs";
 
 export const createRoomController = async (req, res) => {
     try {
+        console.log(req.formdata);
         const { title, address, price, waterPrice, elecPrice, description } = req.body;
-
         // validation
         switch (true) {
             case !title:
@@ -18,6 +19,8 @@ export const createRoomController = async (req, res) => {
             return res.status(500).send({ error: "Electric Price is Required" });
             case !description:
             return res.status(500).send({ error: "Description is Required" });
+            case photo && photo.size > 1000000:
+                return res.status(500).send({ error: "photo is Required and should be less then 1mb" });
         }
 
         var newRoom = {
@@ -28,6 +31,11 @@ export const createRoomController = async (req, res) => {
             elecPrice: elecPrice,
             description: description
         };
+
+        if(photo) {
+            newRoom.photo.data = fs.readFileSync(photo.path)
+            newRoom.photo.contentType = photo.type
+        }
     
         // const exisitingUser = await userModel.findById( req.params.id );
         // res.status(200).send(exisitingUser);

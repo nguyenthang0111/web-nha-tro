@@ -19,7 +19,7 @@ function Register() {
     try {
       const res = await axios.post(
         '/api/auth/register',
-        { name, email, password, phone, address }
+        { name, email, password, phone, address, answer }
       );
       if (res && res.data.success) {
         toast.success("Đăng ký thành công");
@@ -98,7 +98,7 @@ function Register() {
               <label>What is Your Favorite sports</label>
               <input 
                 className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus: bg-gray-800 focus:outline-none' 
-                type="text" 
+                type="textthangla" 
                 value={answer}
                 onChange={(e) => setAnswer(e.target.value)}
               />

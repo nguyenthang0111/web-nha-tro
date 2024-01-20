@@ -77,7 +77,17 @@ function Header() {
                     open &&
                     <div className='bg-white p-4 w-48 shadow-lg absolute -left-8 top-8'>
                       <ul>
-                        <li className='p-1 text-base cursor-pointer rounded hover:bg-blue-100'>Dashboard</li>
+                        <li 
+                          className='p-1 text-base cursor-pointer rounded hover:bg-blue-100'
+                        >
+                          <NavLink
+                            to={`/dashboard/${
+                              auth?.user?.role === 1 ? "admin" : "user"
+                            }`}
+                          >
+                            Dashboard
+                          </NavLink>
+                        </li>
                         <li className='p-1 text-base cursor-pointer rounded hover:bg-blue-100' onClick={handleLogout}>Logout</li>
                       </ul>
                     </div>
