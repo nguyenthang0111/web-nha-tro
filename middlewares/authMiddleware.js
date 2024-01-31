@@ -37,6 +37,6 @@ export const isAdmin = async (req, res, next) => {
       success: false,
       error,
       message: "Error in admin middelware",
-    });
+    });   
   }
 };

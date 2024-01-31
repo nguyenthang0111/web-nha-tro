@@ -25,7 +25,7 @@ function Rooms() {
     <Layout>
       <div className='flex flex-row bg-neutral-100 h-screen w-screen overflow-hidden'>
         <AdminMenu />
-        <div className='p-4'>
+        <div className='p-4 w-4/6'>
           <div className='p-5 h-screen'>
             <h1 className='text-xl mb-2'>Danh sách phòng trọ</h1>
 

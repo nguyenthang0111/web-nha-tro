@@ -60,7 +60,7 @@ function NewRoom() {
                 <h2 class="text-xl font-semibold leading-7 text-gray-900 pb-2">Tạo phòng trọ mới</h2>
                 {/* Title */}
                 <div class="sm:col-span-3 pb-2">
-                    <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Tên phòng trọ</label>
+                    <label class="block text-sm font-medium leading-6 text-gray-900">Tên phòng trọ</label>
                     <div class="mt-2">
                         <input 
                             type="text" 
@@ -74,7 +74,7 @@ function NewRoom() {
 
                 {/* Address */}
                 <div class="sm:col-span-3 pb-2">
-                    <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Địa chỉ của phòng trọ</label>
+                    <label class="block text-sm font-medium leading-6 text-gray-900">Địa chỉ của phòng trọ</label>
                     <div class="mt-2">
                         <input 
                             type="text" 
@@ -88,7 +88,7 @@ function NewRoom() {
 
                 {/* Description */}
                 <div class="sm:col-span-3 pb-2">
-                    <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Mô tả của phòng trọ</label>
+                    <label class="block text-sm font-medium leading-6 text-gray-900">Mô tả của phòng trọ</label>
                     <div class="mt-2">
                         <input 
                             type="text" 
@@ -102,7 +102,7 @@ function NewRoom() {
 
                 {/* Price */}
                 <div class="sm:col-span-3 pb-2">
-                    <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Giá của phòng trọ</label>
+                    <label class="block text-sm font-medium leading-6 text-gray-900">Giá của phòng trọ</label>
                     <div class="mt-2">
                         <input 
                             type="text" 
@@ -116,7 +116,7 @@ function NewRoom() {
 
                 {/* Water Price */}
                 <div class="sm:col-span-3 pb-2">
-                    <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Giá nước của phòng trọ</label>
+                    <label class="block text-sm font-medium leading-6 text-gray-900">Giá nước của phòng trọ</label>
                     <div class="mt-2">
                         <input 
                             type="text" 
@@ -130,7 +130,7 @@ function NewRoom() {
 
                 {/* Elec Price */}
                 <div class="sm:col-span-3 pb-2">
-                    <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Giá điện của phòng trọ</label>
+                    <label class="block text-sm font-medium leading-6 text-gray-900">Giá điện của phòng trọ</label>
                     <div class="mt-2">
                         <input 
                             type="text" 
@@ -144,7 +144,7 @@ function NewRoom() {
 
                 {/* Image */}
                 <div class="sm:col-span-3 pb-2 w-2/5">
-                    <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Tải ảnh lên</label>
+                    <label class="block text-sm font-medium leading-6 text-gray-900">Tải ảnh lên</label>
                     <input
                         type="file"
                         name="photo"

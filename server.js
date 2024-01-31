@@ -5,6 +5,7 @@ import morgan from "morgan";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoute.js";
 import roomRoutes from "./routes/roomRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 import cors from "cors";
 
 //configure env
@@ -24,6 +25,7 @@ app.use(morgan("dev"));
 //routes
 app.use("/api/auth", authRoutes);
 app.use("/api/room", roomRoutes);
+app.use("/api/user", userRoutes);
 
 //rest api
 app.get("/", (req, res) => {
