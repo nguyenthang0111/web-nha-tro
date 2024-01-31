@@ -10,6 +10,9 @@ import AdminRoute from './components/Routes/AdminRoute';
 import AdminDashboard from './pages/Admin/AdminDashboard';
 import Users from './pages/Admin/Users';
 import Rooms from './pages/Admin/Rooms';
+import UserRoom from './pages/User/UserRoom';
+import UserInfo from './pages/User/UserInfo';
+import NewRoom from './pages/User/NewRoom';
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/dashboard" element={<PrivateRoute />} >
           <Route path="user" element={<Dashboard />} />
+          <Route path="user/userroom" element={<UserRoom />} />
+          <Route path="user/userinfo" element={<UserInfo />} />
+          <Route path="user/newroom" element={<NewRoom />} />
         </Route>
         <Route path="/dashboard" element={<AdminRoute />} >
           <Route path="admin" element={<AdminDashboard />} />

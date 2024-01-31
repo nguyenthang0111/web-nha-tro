@@ -6,6 +6,7 @@ import {
     getSingleRoomController, 
     roomListController 
 } from "../controllers/roomController.js";
+import formidable from 'express-formidable'
 
 const router = express.Router();
 
@@ -14,6 +15,7 @@ const router = express.Router();
 router.put(
     "/create-room/:id",
     requireSignIn,
+    formidable(),
     createRoomController
 );
 

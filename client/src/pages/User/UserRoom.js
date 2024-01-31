@@ -1,15 +1,15 @@
 import React from 'react'
 import Layout from '../../components/Layout/Layout'
-import { Outlet } from 'react-router-dom'
 import UserMenu from '../../components/Layout/UserMenu'
+import { Outlet } from 'react-router-dom'
 
-function Dashboard() {
+function UserRoom() {
   return (
-    <Layout title={"Dashboard"}>
+    <Layout title="Phòng trọ đã đăng">
       <div className='flex flex-row bg-neutral-100 h-screen w-screen overflow-hidden'>
         <UserMenu />
         <div className='p-4'>
-          <div className='bg-teal-200'>This is Admin Dashboard</div>
+          <div className='bg-teal-200'>Phòng trọ đã đăng</div>
           <div><Outlet /></div>
 
         </div>
@@ -18,4 +18,4 @@ function Dashboard() {
   )
 }
 
-export default Dashboard
+export default UserRoom

@@ -3,8 +3,8 @@ import fs from "fs";
 
 export const createRoomController = async (req, res) => {
     try {
-        console.log(req.formdata);
-        const { title, address, price, waterPrice, elecPrice, description } = req.body;
+        const { title, address, price, waterPrice, elecPrice, description } = req.fields;
+        const { photo } = req.files;
         // validation
         switch (true) {
             case !title:
@@ -29,8 +29,11 @@ export const createRoomController = async (req, res) => {
             price: price,
             waterPrice: waterPrice,
             elecPrice: elecPrice,
-            description: description
+            description: description,
+            photo: photo
         };
+
+        console.log(newRoom)
 
         if(photo) {
             newRoom.photo.data = fs.readFileSync(photo.path)

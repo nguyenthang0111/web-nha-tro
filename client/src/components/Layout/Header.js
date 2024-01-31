@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { useAuth, auth } from '../../context/auth'
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [auth, setAuth] = useAuth();
   const handleLogout = () => {
@@ -12,6 +14,7 @@ function Header() {
       token: "",
     });
     localStorage.removeItem("auth");
+    navigate("/");
   }
 
   return (
