@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom'
 function UserRoom() {
   const [auth, setAuth] = useAuth()
   const [rooms, setRooms] = useState([])
-  const [id, setId] = useState("")
   const navigate = useNavigate()
   
 
@@ -30,15 +29,15 @@ function UserRoom() {
   }, [])
 
   // Delete a room
-  const handleDelete = async () => {
+  const handleDelete = async (id) => {
     try {
       let answer = window.prompt("Bạn có chắc muốn xóa phòng trọ này không ? ");
       if (!answer) return;
-      const { data } = await axios.delete(
+      const { data } = await axios.put(
         `/api/room/delete-room/${auth.user.email}/${id}`
       );
       toast.success("Xóa phòng trọ thành công");
-      navigate("/dashboard/user");
+      window.location.reload()
     } catch (error) {
       console.log(error)
       toast.error("Something went wrong")
@@ -82,19 +81,17 @@ function UserRoom() {
                       <span className='p-1.5 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg'>Active</span>
                     </td>
                     <td className='p-3 text-sm text-gray-700 whitespace-nowrap'>
-                      <a 
-                        href='' 
+                      <button
                         className='p-1.5 text-xs font-medium tracking-wider text-white bg-[#28a745] hover:bg-[#218838] rounded-lg  mr-3'
                       >
                         Sửa
-                      </a>
-                      <a 
-                        href='' 
+                      </button>
+                      <button
                         className='p-1.5 text-xs font-medium  tracking-wider text-white bg-[#dc3545] hover:bg-[#c82333] rounded-lg '
-                        onClick={handleDelete}
+                        onClick={() => handleDelete(room._id)}
                       >
                         Xóa
-                      </a>
+                      </button>
                     </td>
                   </tr>
                 ))}
