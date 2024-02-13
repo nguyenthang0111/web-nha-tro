@@ -30,7 +30,10 @@ export const createRoomController = async (req, res) => {
             waterPrice: waterPrice,
             elecPrice: elecPrice,
             description: description,
-            photo: photo
+            photo: {
+                data: fs.readFileSync(photo.path),
+                contentType: photo.type
+            }
         };
 
         console.log(newRoom)
@@ -107,7 +110,7 @@ export const roomListController = async (req, res) => {
         const page = req.params.page ? req.params.page : 1;
         const listRooms = [];
         const outputRooms = [];
-        userModel.find({}).then(function(users){
+        await userModel.find({}).then(function(users){
             users.forEach(user => {
                 const room = user.rooms;
                 listRooms.push(...room);
@@ -125,5 +128,55 @@ export const roomListController = async (req, res) => {
             success: false,
             message: "Error in loading room per Page"
         })
+    }
+}
+
+// Get user list room 
+export const getUserListRoomController = async (req, res) => {
+    try {
+        console.log(req.params.id)
+        //check user
+        const exisitingUser = await userModel.findById( req.params.id );
+        //exisiting user
+        if (!exisitingUser) {
+        return res.status(200).send({
+            success: false,
+            message: "No User satisfy",
+        });
+        }
+        const rooms = exisitingUser.rooms
+        res.status(201).send({
+            success: true,
+            message: "User Register Successfully",
+            rooms
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(400).send({
+            success: false,
+            message: "Error in loading user list room"
+        })
+    }
+}
+
+//delete a room
+ 
+export const deleteRoomController = async (req, res) => {
+    try {
+        const email = req.params.email
+        const rid = req.params.rid
+        const user = await userModel.findOne({ email });
+        await user.rooms.pull({ _id: rid });
+        await user.save();
+        res.status(201).send({
+            success: true,
+            message: "Delete Room Successfully",
+          });
+    } catch (error) {
+        console.log(error)
+        res.status(400).send({
+            success: false,
+            message: "Error in delete room"
+        })   
     }
 }
