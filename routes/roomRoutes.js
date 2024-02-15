@@ -7,6 +7,7 @@ import {
     getSingleRoomController, 
     getUserListRoomController, 
     roomListController,
+    updateRoomController,
 } from "../controllers/roomController.js";
 import formidable from 'express-formidable'
 
@@ -23,8 +24,9 @@ router.put(
 
 router.get("/get-rooms", getRoomController);
 router.get("/room-list/:page", roomListController);
-router.get("/get-room/:rid", getSingleRoomController)
+router.get("/get-room/:email/:rid", requireSignIn, getSingleRoomController)
 router.get("/user-list-room/:id",requireSignIn ,getUserListRoomController)
 router.put("/delete-room/:email/:rid", requireSignIn, deleteRoomController)
+router.put("/update-room/:id/:rid", formidable(), updateRoomController)
 
 export default router;

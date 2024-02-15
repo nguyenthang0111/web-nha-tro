@@ -13,6 +13,7 @@ import Rooms from './pages/Admin/Rooms';
 import UserRoom from './pages/User/UserRoom';
 import UserInfo from './pages/User/UserInfo';
 import NewRoom from './pages/User/NewRoom';
+import UpdateRoom from './pages/User/UpdateRoom';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="user/userroom" element={<UserRoom />} />
           <Route path="user/userinfo" element={<UserInfo />} />
           <Route path="user/newroom" element={<NewRoom />} />
+          <Route path="user/update-room/:rid" element={<UpdateRoom />} />
         </Route>
         <Route path="/dashboard" element={<AdminRoute />} >
           <Route path="admin" element={<AdminDashboard />} />

@@ -25,7 +25,6 @@ function UserRoom() {
   //method
   useEffect(() => {
     getAllRooms();
-    console.log(auth)
   }, [])
 
   // Delete a room
@@ -83,6 +82,7 @@ function UserRoom() {
                     <td className='p-3 text-sm text-gray-700 whitespace-nowrap'>
                       <button
                         className='p-1.5 text-xs font-medium tracking-wider text-white bg-[#28a745] hover:bg-[#218838] rounded-lg  mr-3'
+                        onClick={() => navigate(`/dashboard/user/update-room/${room._id}`)}
                       >
                         Sửa
                       </button>
